@@ -2,11 +2,11 @@ name: jinshu-price
 
 on:
   schedule:
-    - cron: '1 */1 * * *' 
+    - cron: '1 */1 * * *'
   # push:
   #   branches:
   #     - main
-  workflow_dispatch: 
+  workflow_dispatch:
 
 jobs:
   build:
@@ -37,6 +37,12 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add .
-        git diff --staged --name-status
-        git commit -m 'Update jinshu content'
-        git push
+#        git diff --staged --name-status
+#        git commit -m 'Update jinshu content'
+#        git push
+        if ! git diff --cached --quiet; then
+          git commit -m "Update data"
+          git push
+        else
+          echo "No changes to commit"
+        fi
