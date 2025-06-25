@@ -40,12 +40,3 @@ jobs:
         git diff --staged --name-status
         git commit -m 'Update jinshu content'
         git push
-    
-    - name: FTP Upload
-      uses: SamKirkland/FTP-Deploy-Action@4.0.0
-      with:
-        server: ${{ secrets.FTP_SERVER_206 }}
-        username: github_pages
-        password: 7XD6iNZ8eDfWLnLC
-        local-dir: ./jinshu_price/
-        remote-dir: /
