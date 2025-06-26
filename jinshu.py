@@ -25,6 +25,6 @@ for row in rows:
     #     td = {"name": data[1][-1], "price": data[4]if len(data) > 4 else 0}
     all_data.append(result)
 
-
+open("all_data.json", "w", encoding="utf-8").close()
 with open("all_data.json", "w", encoding="utf-8") as f:
     json.dump(all_data, f, ensure_ascii=False, indent=2)
