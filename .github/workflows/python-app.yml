@@ -36,14 +36,12 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
+        echo "test" >> test.txt
         git add .
-        git diff --staged --name-status
-        git commit -m 'Update jinshu content'
-        git push
-        # if !git diff --cached --quiet; then
-        #   git commit -m "Auto update"
-        #   git push
-        # else
-        #   echo "No changes to commit"
-        # fi
+        if ! git diff --cached --quiet; then
+          git commit -m "Auto update"
+          git push
+        else
+          echo "No changes"
+        fi
         
